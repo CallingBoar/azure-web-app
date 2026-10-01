@@ -1,0 +1,19 @@
+[project]
+name = "azure-web-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "CallingBoar", email = "bmtzm@icloud.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "flask-restful>=0.3.10",
+]
+
+[project.scripts]
+launch-app = "azure_web_app:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
