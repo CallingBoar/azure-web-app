@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Here is a list of the linux distros I have used</h2>
+
+<div class="row g-3">
+  {% for distro in distros %}
+    
+    {% if distro.rating > 8 %}
+        <div class="col-12 col-md-6 col-lg-4">
+        <div class="card text-bg-success mb-3">
+            <div class="card-body">
+            <h5 class="card-title">{{ loop.index }}. {{ distro.name }}<span class="badge text-bg-warning">Seal of Approval</span></h5>
+            <p class="card-text">{{ distro.experience }}</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Reveal Rating
+                </button>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">{{ distro.rating }}/10</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+    {% elif distro.rating > 5 %}
+        <div class="col-12 col-md-6 col-lg-4">
+        <div class="card text-bg-warning mb-3">
+            <div class="card-body">
+            <h5 class="card-title">{{ loop.index }}. {{ distro.name }}</h5>
+            <p class="card-text">{{ distro.experience }}</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Reveal Rating
+                </button>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">{{ distro.rating }}/10</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+    {% else %}
+        <div class="col-12 col-md-6 col-lg-4">
+        <div class="card text-bg-danger mb-3">
+            <div class="card-body">
+            <h5 class="card-title">{{ loop.index }}. {{ distro.name }}</h5>
+            <p class="card-text">{{ distro.experience }}</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Reveal Rating
+                </button>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">{{ distro.rating }}/10</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+    {% endif %}
+
+  {% else %}
+    <p>No favorites yet!</p>
+  {% endfor %}
+
+{% endblock %}
