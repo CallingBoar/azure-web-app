@@ -13,13 +13,13 @@
         <div class="card text-bg-success mb-3">
             <div class="card-body">
             <h5 class="card-title">{{ loop.index }}. {{ distro.name }}<span class="badge text-bg-warning">Seal of Approval</span></h5>
-            <p class="card-text">{{ distro.experience }}</p>
+            <p class="card-text">{{ distro.experience | default("no opinions yet!") }}</p>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Reveal Rating
                 </button>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">{{ distro.rating }}/10</a></li>
+                <li><a class="dropdown-item" href="#">{{ distro.rating | default("no rating yet!") }}/10</a></li>
                 </ul>
             </div>
             </div>
@@ -30,13 +30,13 @@
         <div class="card text-bg-warning mb-3">
             <div class="card-body">
             <h5 class="card-title">{{ loop.index }}. {{ distro.name }}</h5>
-            <p class="card-text">{{ distro.experience }}</p>
+            <p class="card-text">{{ distro.experience | default("no opinions yet!") }}</p>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Reveal Rating
                 </button>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">{{ distro.rating }}/10</a></li>
+                <li><a class="dropdown-item" href="#">{{ distro.rating | default("no rating yet!") }}/10</a></li>
                 </ul>
             </div>
             </div>
@@ -47,13 +47,13 @@
         <div class="card text-bg-danger mb-3">
             <div class="card-body">
             <h5 class="card-title">{{ loop.index }}. {{ distro.name }}</h5>
-            <p class="card-text">{{ distro.experience }}</p>
+            <p class="card-text">{{ distro.experience | default("no opinions yet!") }}</p>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Reveal Rating
                 </button>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">{{ distro.rating }}/10</a></li>
+                <li><a class="dropdown-item" href="#">{{ distro.rating | default("no rating yet!") }}/10</a></li>
                 </ul>
             </div>
             </div>
