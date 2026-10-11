@@ -123,9 +123,25 @@ class Register(Resource):
 #        wrote in db.py.
 # ----------------------------------------------------------------------------
 
-# class Login(Resource):
-#     def post(self):
-#         ...
+class Login(Resource):
+    def post(self):
+        data = get_json_body()
+
+        username = data["username"]
+        password = data["password"]
+        print("password inputted: ", password)
+
+        missing_field = find_missing_field(data, ("username", "password"))
+        if missing_field is not None:
+            return {"message": f"Missing required field: {missing_field}"}, 400
+
+        login_info = get_db().get_login_info(username)
+        if login_info == None:
+            return {"message": BAD_LOGIN_MESSAGE}, 401
+        if not check_password_hash(login_info[0], password):
+            return {"message": BAD_LOGIN_MESSAGE}, 401
+
+        return {"message": f"Welcome back {login_info[1]}! Your last login was at {login_info[2]}"}, 200
 
 
 def setup_auth(app: Flask) -> None:
@@ -135,4 +151,4 @@ def setup_auth(app: Flask) -> None:
     api = Api(app)
     api.add_resource(Register, "/register")
     # TODO: Once you implement Login
-    # api.add_resource(Login, "/login")
+    api.add_resource(Login, "/login")

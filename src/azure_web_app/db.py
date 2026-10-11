@@ -111,8 +111,12 @@ class Database:
     # comes from the database's clock, like create_date does), and commit.
     # ------------------------------------------------------------------------
 
-    # def get_login_info(self, username: str):
-    #     ...
+    def get_login_info(self, username: str):
+        with self.connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT password, display_name, last_login FROM Users WHERE username = ?", (username)
+            )
+            return cursor.fetchone()
 
 
 def get_db() -> Database:
