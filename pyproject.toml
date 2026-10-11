@@ -8,7 +8,10 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "dotenv>=0.9.9",
+    "flask-bcrypt>=1.0.1",
     "flask-restful>=0.3.10",
+    "mssql-python>=1.15.0",
 ]
 
 [project.scripts]
