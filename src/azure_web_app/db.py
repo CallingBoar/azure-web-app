@@ -118,6 +118,14 @@ class Database:
             )
             return cursor.fetchone()
 
+    def update_last_login(self, username: str):
+        print("updating")
+        with self.connection.cursor() as cursor:
+            cursor.execute(
+                "UPDATE Users SET last_login = GETDATE() WHERE username = ?", (username)
+            )
+            self.connection.commit()
+
 
 def get_db() -> Database:
     """Return this request's Database, connecting on first use."""

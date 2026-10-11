@@ -129,7 +129,6 @@ class Login(Resource):
 
         username = data["username"]
         password = data["password"]
-        print("password inputted: ", password)
 
         missing_field = find_missing_field(data, ("username", "password"))
         if missing_field is not None:
@@ -141,6 +140,7 @@ class Login(Resource):
         if not check_password_hash(login_info[0], password):
             return {"message": BAD_LOGIN_MESSAGE}, 401
 
+        get_db().update_last_login(username)
         return {"message": f"Welcome back {login_info[1]}! Your last login was at {login_info[2]}"}, 200
 
 
