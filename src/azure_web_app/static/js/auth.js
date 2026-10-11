@@ -135,14 +135,6 @@ async function submitRegisterForm(event) {
 	alert("Registration successful! Welcome, " + reply.result.displayName);
 	hideModal("registerModal");
 }
-
-// TODO: Write submitLoginForm(event) here.
-// It should look a lot like submitRegisterForm above:
-//   1. Stop the browser's default form submission.
-//   2. Validate the loginUsername and loginPassword inputs.
-//   3. POST the username and password to /login.
-//   4. Show the server's message in an alert, whether the login worked or not.
-//   5. If it worked, close the login modal.
 async function submitLoginForm(event) {
 
 	event.preventDefault();

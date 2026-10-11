@@ -96,21 +96,6 @@ class Database:
         self.connection.commit()
         return True
 
-    # ------------------------------------------------------------------------
-    # YOUR TASK (part 1 of 2): write get_login_info.
-    #
-    # It takes a username and returns the row for that user, or None if there
-    # is no such user. SELECT the columns Login needs: the password hash, the
-    # display name, and the last login time.
-    #
-    # fetchone() returns a row (or None). Rows from mssql-python let you use
-    # column names: row.display_name
-    #
-    # Bonus: also write update_last_login(username), which sets the user's
-    # last_login to the current time. Use GETDATE() in your SQL (so the time
-    # comes from the database's clock, like create_date does), and commit.
-    # ------------------------------------------------------------------------
-
     def get_login_info(self, username: str):
         with self.connection.cursor() as cursor:
             cursor.execute(

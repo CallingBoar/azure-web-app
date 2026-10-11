@@ -101,28 +101,6 @@ class Register(Resource):
         return {"message": "User created successfully", "displayName": display_name}, 201
 
 
-# ----------------------------------------------------------------------------
-# YOUR TASK (part 2 of 2): implement the login endpoint.
-# (Part 1 is get_login_info in db.py. Write that first.)
-#
-# 1. Uncomment the Login class below, and the api.add_resource line for it in
-#    setup_auth (at the bottom of this file).
-# 2. Read the username and password from the JSON body. Look at how Register
-#    does this, including what it does when a field is missing.
-# 3. Use get_db().get_login_info(username) to look up the user.
-# 4. If no user came back, OR check_password_hash(stored_hash, password) says
-#    the password is wrong, return {"message": BAD_LOGIN_MESSAGE}, 401
-#    Use the same message for both cases. Why? (Hint: what could an attacker
-#    learn if "no such user" and "wrong password" were different messages?)
-# 5. On success, return a 200 response whose "message" welcomes the user back
-#    by their display name and tells them when they last logged in.
-#    Careful: last_login is NULL in the database (None in Python) the very
-#    first time someone logs in.
-#
-# Bonus: after a successful login, call the update_last_login method you
-#        wrote in db.py.
-# ----------------------------------------------------------------------------
-
 class Login(Resource):
     def post(self):
         data = get_json_body()
